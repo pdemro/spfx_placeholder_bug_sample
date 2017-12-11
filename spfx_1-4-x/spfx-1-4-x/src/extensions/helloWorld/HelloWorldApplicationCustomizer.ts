@@ -1,7 +1,7 @@
 import { override } from '@microsoft/decorators';
 import { Log } from '@microsoft/sp-core-library';
 import {
-  BaseApplicationCustomizer
+  BaseApplicationCustomizer, PlaceholderContent, PlaceholderName
 } from '@microsoft/sp-application-base';
 import { Dialog } from '@microsoft/sp-dialog';
 
@@ -23,17 +23,51 @@ export interface IHelloWorldApplicationCustomizerProperties {
 export default class HelloWorldApplicationCustomizer
   extends BaseApplicationCustomizer<IHelloWorldApplicationCustomizerProperties> {
 
+    private _topPlaceholder: PlaceholderContent | undefined;
+    private _bottomPlaceholder: PlaceholderContent | undefined;
+
   @override
   public onInit(): Promise<void> {
-    Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
+    console.log('HelloWorldApplicationCustomizer._renderPlaceHolders()');
+    console.log('Available placeholders: ',
+      this.context.placeholderProvider.placeholderNames.map(name => PlaceholderName[name]).join(', '));
 
-    let message: string = this.properties.testMessage;
-    if (!message) {
-      message = '(No properties were provided.)';
-    }
+    this.context.placeholderProvider.changedEvent.add(this, this.renderTop);
+    this.context.application.navigatedEvent.add(this, this.renderTop)
+    this.context.application._layoutChangedEvent.add(this, this.renderTop);
 
-    Dialog.alert(`Hello from ${strings.Title}:\n\n${message}`);
+    this.renderTop();
 
     return Promise.resolve();
+  }
+
+
+
+  private renderTop() {
+
+    // Handling the top placeholder
+    if (!this._topPlaceholder) {
+      this._topPlaceholder =
+        this.context.placeholderProvider.tryCreateContent(
+          PlaceholderName.Top,
+          { onDispose: this._onDispose });
+
+      // The extension should not assume that the expected placeholder is available.
+      if (!this._topPlaceholder) {
+        console.error('The expected placeholder (Top) was not found.');
+        return;
+      }
+
+      if (this._topPlaceholder.domElement) {
+        this._topPlaceholder.domElement.innerHTML = `Hello World spfx1.4 1.0.0.0`
+      }
+      
+    }
+
+
+  }
+
+  private _onDispose(): void {
+    console.log('[HelloWorldApplicationCustomizer._onDispose] Disposed custom top and bottom placeholders.');
   }
 }

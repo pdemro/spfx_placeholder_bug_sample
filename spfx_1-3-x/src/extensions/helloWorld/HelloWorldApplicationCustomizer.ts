@@ -33,7 +33,6 @@ export default class HelloWorldApplicationCustomizer
       this.context.placeholderProvider.placeholderNames.map(name => PlaceholderName[name]).join(', '));
 
     this.context.placeholderProvider.changedEvent.add(this, this.renderTop);
-    // this.context.placeholderProvider.changedEvent.add(this, this.renderTop);
     this.context.application.navigatedEvent.add(this, this.renderTop)
     this.context.application._layoutChangedEvent.add(this, this.renderTop);
 

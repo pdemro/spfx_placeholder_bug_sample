@@ -1,4 +1,4 @@
 {
   "$schema": "https://dev.office.com/json-schemas/spfx-build/write-manifests.schema.json",
-  "cdnBasePath": "<!-- PATH TO CDN -->"
+  "cdnBasePath": "https://publiccdn.sharepointonline.com/m365x721636.sharepoint.com/sites/cdn/cdn/spfx/wsb-extension-spfx-1-4-x-helloworld"
 }
