@@ -9,6 +9,12 @@ To reproduce -
 
 This bug also occures with the out-of-box news web part when more than 4 articles are added (5 articles is the threshold for the see all link visibility).  The extension remains missing when using the back button
 
+## Folder Structure
+root -
+    - spfx_1-3-x (bug reproduced in spfx 1.3)
+    - spfx_1-4-x 
+        - spfx_1-4-x (bug reproduced in spfx 1.4)
+
 ## prototype
 
 This is where you include your WebPart documentation.
