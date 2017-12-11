@@ -3,7 +3,7 @@
   "solution": {
     "name": "prototype-client-side-solution",
     "id": "eb9c34b4-712f-4404-8302-a6d40371fb4c",
-    "version": "1.0.0.2",
+    "version": "1.0.0.5",
     "features": [
       {
         "title": "Application Extension - Deployment of custom action.",

@@ -33,6 +33,9 @@ export default class HelloWorldApplicationCustomizer
       this.context.placeholderProvider.placeholderNames.map(name => PlaceholderName[name]).join(', '));
 
     this.context.placeholderProvider.changedEvent.add(this, this.renderTop);
+    // this.context.placeholderProvider.changedEvent.add(this, this.renderTop);
+    this.context.application.navigatedEvent.add(this, this.renderTop)
+    this.context.application._layoutChangedEvent.add(this, this.renderTop);
 
     this.renderTop();
 
@@ -57,7 +60,7 @@ export default class HelloWorldApplicationCustomizer
       }
 
       if (this._topPlaceholder.domElement) {
-        this._topPlaceholder.domElement.innerHTML = `Hello World 12344321`
+        this._topPlaceholder.domElement.innerHTML = `Hello World 1.0.0.5`
       }
       
     }
