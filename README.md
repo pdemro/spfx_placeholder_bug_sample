@@ -7,7 +7,7 @@ To reproduce -
 2. Deploy the extension to a modern communication site
 3. Click the "see all" link from the out-of-box events web part
 
-This bug also occures with the out-of-box news web part when more than 4 articles are added (5 articles is the threshold for the see all link visibility).  The extension remains missing when using the back button
+This bug also occures with the out-of-box news web part when more than 4 articles are added (5 articles is the threshold for the see all link visibility).  The extension remains missing when using the back button or clicking the home link
 
 ## Folder Structure
 root -
