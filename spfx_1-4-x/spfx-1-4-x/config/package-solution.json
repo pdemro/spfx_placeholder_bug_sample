@@ -3,7 +3,7 @@
   "solution": {
     "name": "spfx-1-4-x-client-side-solution",
     "id": "be2b4c7c-8239-48ee-adb5-255fbdb1c3c9",
-    "version": "1.0.0.0",
+    "version": "1.0.0.2",
     "includeClientSideAssets": true,
     "features": [
       {
